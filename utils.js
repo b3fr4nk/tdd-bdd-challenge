@@ -7,15 +7,15 @@ const sayHello = () => {
 }
 
 const area = (w, h) => {
-  // should return the area
+  return w * h
 }
 
 const perimeter = (w, h) => {
-  // should return the perimeter
+  return w * 2 + h * 2
 }
 
 const circleArea = r => {
-  // should return the area of the circle
+  return r**2 * Math.PI
 }
 
 // ========================================================
@@ -36,23 +36,36 @@ const createItem = (name, price) => {
 }
 
 const getShoppingCart = () => {
-  // should return the current state of shopping cart
+  return shoppingCart
 }
 
 const addItemToCart = (item) => {
-  // should add item to shopping cart
+  shoppingCart.push(item)
 }
 
 const getNumItemsInCart = () => {
-  // should return the total quantity of items in cart
+  count = 0
+  shoppingCart.forEach(item => {
+    count += item.quantity
+  });
+  return count
 }
 
 const removeItemFromCart = (item) => {
-  // should remove item from shopping cart
+  const index = shoppingCart.indexOf(item)
+  delete shoppingCart[index]
+}
+
+const getCartTotal = () => {
+  total = 0
+  shoppingCart.forEach(item => {
+    total += item.price * item.quantity
+  })
+  return total
 }
 
 module.exports = {
   sayHello, area, perimeter, circleArea,
   clearCart, createItem, getShoppingCart, addItemToCart,
-  getNumItemsInCart, removeItemFromCart
+  getNumItemsInCart, removeItemFromCart, getCartTotal
 }
